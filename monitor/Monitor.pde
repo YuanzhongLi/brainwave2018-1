@@ -71,3 +71,5 @@ void oscEvent(OscMessage msg){
     pointer = (pointer + 1) % BUFFER_SIZE;
   }
 }
+
+/muse/eggでmuse/eggを指定
