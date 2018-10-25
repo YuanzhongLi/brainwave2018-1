@@ -26,7 +26,7 @@ int black_rgb = 0;
 
 int BG_rgb;
 
-int wave = buffer[0];
+
 
 void setup() {
 
@@ -34,7 +34,7 @@ void setup() {
 
   frameRate(1);
 
-  if (wave > 0.4) {
+  if (buffer[0] > 0.4) {
     BG_rgb = black_rgb;
   } else {
     BG_rgb = white_rgb;
@@ -52,7 +52,7 @@ void setup() {
 
 void draw() {
 
-  if (wave <= 0.4) {
+  if (buffer[0] <= 0.4) {
     BG_rgb += bright_rate;
     if (BG_rgb >= 255) {
       BG_rgb = 255;
@@ -73,7 +73,7 @@ void draw() {
     fill (255, 255, 255);
   }
 
-  String wave_value = str(wave);
+  String wave_value = str(buffer[0]);
 
   text(wave_value, 50, 30);
 
