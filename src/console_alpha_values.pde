@@ -1,6 +1,8 @@
 import oscP5.*;
 import netP5.*;
 
+final int N_CHANNELS = 4;
+
 final int PORT = 5000;
 OscP5 oscP5 = new OscP5(this, PORT);
 
