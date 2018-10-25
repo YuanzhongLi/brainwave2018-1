@@ -1,6 +1,8 @@
 import oscP5.*;
 import netP5.*;
 
+final int N_CHANNELS = 4;
+
 final int PORT = 5000;
 OscP5 oscP5 = new OscP5(this, PORT);
 
@@ -18,21 +20,21 @@ void oscEvent(OscMessage msg){
 
 int bright_rate = 26;
 
-int white_rgb = 0;
+int white_rgb = 255;
 
-int black_rgb =255;
+int black_rgb = 0;
 
 int BG_rgb;
 
-int wave = 20;
+int wave = buffer[0];
 
 void setup() {
 
-  size(600,400);
+  size(800,600);
 
   frameRate(1);
 
-  if (wave > 200) {
+  if (wave > 0.4) {
     BG_rgb = black_rgb;
   } else {
     BG_rgb = white_rgb;
@@ -41,7 +43,6 @@ void setup() {
   PFont font = createFont("MS Gothic",48,true);
   textFont(font);
   textSize(24);
-  fill(255,0,0);
 
   background(BG_rgb);
 
@@ -50,38 +51,30 @@ void setup() {
 }
 
 void draw() {
-  int s = second();
 
-  if (s % 20 < 10) {
-    wave = 20;
+  if (wave <= 0.4) {
+    BG_rgb += bright_rate;
+    if (BG_rgb >= 255) {
+      BG_rgb = 255;
+    }
+    background(BG_rgb);
   } else {
-    wave = 300;
-  }
-
-
-  if (wave < 200) {
     BG_rgb -= bright_rate;
 
     if (BG_rgb <= 0) {
       BG_rgb = 0;
     }
-
     background(BG_rgb);
-
-  } else {
-
-    BG_rgb += bright_rate;
-
-    if (BG_rgb >= 255) {
-      BG_rgb = 255;
-    }
-
-    background(BG_rgb);
-
   }
 
-  String a_wave_value = str(wave);
+  if (BG_rgb > 127.5) {
+    fill(0, 0, 0);
+  } else {
+    fill (255, 255, 255);
+  }
 
-  text(a_wave_value, 50, 30);
+  String wave_value = str(wave);
+
+  text(wave_value, 50, 30);
 
 }
