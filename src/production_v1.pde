@@ -26,8 +26,6 @@ int black_rgb = 0;
 
 int BG_rgb;
 
-
-
 void setup() {
 
   size(800,600);
