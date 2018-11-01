@@ -132,9 +132,7 @@ void draw() {
     text("After " + str(await_count) + " sec it will be closed", 50, 130);
     await_count -= 1;
   } else {
+    sleep_seconds = 0;
     text("Awake", 50, 80);
   }
-
-  String wave_value = str(buffer[0]);
-  text("ALPAH WAVE : " + wave_value, 50, 30);
 }
