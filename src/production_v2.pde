@@ -135,6 +135,6 @@ void draw() {
     text("Awake", 50, 80);
   }
 
-  String wave_value = str(wave);
+  String wave_value = str(buffer[0]);
   text("ALPAH WAVE : " + wave_value, 50, 30);
 }
